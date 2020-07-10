@@ -1,0 +1,9 @@
+.element__like {
+    min-width: 20.76px;
+    min-height: 18.13px;
+    margin-left: 15px;
+    background-image: url(../../../images/element-like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}

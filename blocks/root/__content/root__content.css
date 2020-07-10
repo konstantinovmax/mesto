@@ -1,0 +1,7 @@
+.root__content {
+    min-width: 300px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-right: 19px;
+    padding-left: 19px;
+}

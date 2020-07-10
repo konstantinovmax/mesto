@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css">
+    <meta name="description" content="Mesto - сервис для публикации фотографий">
+    <meta name="keywords" content="фотографии путешествия публикации">
+    <meta name="author" content="Максим Константинов">
+</head>
+<body class="root">
+    <div class="root__content">
+        <header class="header">
+            <img class="header__logo" src="./images/header-logo.svg" alt="Логотип сервиса Mesto">
+        </header>
+        <main class="content">
+            <section class="profile">
+                <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Фотография Жака-Ива Кусто">
+                <div class="profile__info">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <button class="profile__edit-button"></button>
+                    <p class="profile__subtitle">Исследователь океана</p>
+                </div>           
+                <button class="profile__add-button"></button>
+            </section>
+            <section class="elements">
+                <figure class="element">
+                    <img class="element__image" src="./images/element-karachaevsk.jpg">
+                    <div class="element__caption-container">
+                        <figcaption class="element__caption">Карачаевск</figcaption>
+                        <div class="element__like"></div>
+                    </div>
+                </figure>
+                <figure class="element">
+                    <img class="element__image" src="./images/element-elbrus.jpg">
+                    <div class="element__caption-container">
+                        <figcaption class="element__caption">Гора Эльбрус</figcaption>
+                        <img class="element__like" src="./images/element-like.svg">
+                    </div>
+                </figure>
+                <figure class="element">
+                    <img class="element__image" src="./images/element-dombai.jpg">
+                    <div class="element__caption-container">
+                        <figcaption class="element__caption">Домбай</figcaption>
+                        <img class="element__like" src="./images/element-like.svg">
+                    </div>
+                </figure>
+                <figure class="element">
+                    <img class="element__image" src="./images/element-elbrus.jpg">
+                    <div class="element__caption-container">
+                        <figcaption class="element__caption">Гора Эльбрус</figcaption>
+                        <img class="element__like" src="./images/element-like.svg">
+                    </div>
+                </figure>
+                <figure class="element">
+                    <img class="element__image" src="./images/element-dombai.jpg">
+                    <div class="element__caption-container">
+                        <figcaption class="element__caption">Домбай</figcaption>
+                        <img class="element__like" src="./images/element-like.svg">
+                    </div>
+                </figure>
+                <figure class="element">
+                    <img class="element__image" src="./images/element-karachaevsk.jpg">
+                    <div class="element__caption-container">
+                        <figcaption class="element__caption">Карачаево-Ч...</figcaption>
+                        <img class="element__like" src="./images/element-like.svg">
+                    </div>
+                </figure>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+        </footer>
+    </div>
+</body>
+</html>

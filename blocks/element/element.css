@@ -1,0 +1,12 @@
+@import url(./__caption/element__caption.css);
+@import url(./__image/element__image.css);
+@import url(./__like/element__like.css);
+@import url(./__caption-container/element__caption-container.css);
+
+.element {
+    margin: 0;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
