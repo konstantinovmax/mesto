@@ -18,9 +18,9 @@
             <section class="profile">
                 <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Фотография Жака-Ива Кусто">
                 <div class="profile__info">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <button class="profile__edit-button"></button>
-                    <p class="profile__subtitle">Исследователь океана</p>
+                    <p class="profile__description">Исследователь океана</p>
                 </div>           
                 <button class="profile__add-button"></button>
             </section>
@@ -73,5 +73,15 @@
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
     </div>
+    <div class="modal">
+        <form action="#" class="modal__container">
+            <h2 class="modal__title">Редактировать профиль</h2>
+            <input name="name" type="text" class="modal__input modal__input_type-name" value="Жак-Ив Кусто">
+            <input name="description" type="text" class="modal__input modal__input_type-description" value="Исследователь океана">
+            <button type="submit" class="modal__save-button">Сохранить</button>
+            <button class="modal__close-button"></button>
+        </form>
+    </div>
+    <script src="./scripts/script.js"></script>
 </body>
 </html>

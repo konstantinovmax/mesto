@@ -6,3 +6,7 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/modal/modal.css);
+@import url(../blocks/modal/_is-open/modal_is-open.css);
+@import url(../blocks/modal/_type-name/modal__input_type-name.css);
+@import url(../blocks/modal/_type-description/modal__input_type-description.css);
