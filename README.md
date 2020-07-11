@@ -14,4 +14,4 @@
 3. Реализовать возможность ставить лайк.
 4. Прочие доработки.
 
-### http://konstantinovmax.github.io/mesto/
+### https://konstantinovmax.github.io/mesto/index.html
