@@ -8,6 +8,7 @@
     line-height: 17px;
     font-weight: 400;
     color: black;
+    border-radius: 0;
 }
 
 .modal__input:last-of-type {
