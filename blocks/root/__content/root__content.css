@@ -4,7 +4,7 @@
     margin: 0 auto;
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 882px){
     .root__content {
         padding-right: 19px;
         padding-left: 19px;

@@ -7,8 +7,8 @@ let formElement = modal.querySelector('.modal__container');
 let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
 
-let nameInput = document.querySelector('.modal__input_type-name');
-let descriptionInput = document.querySelector('.modal__input_type-description');
+let nameInput = document.querySelector('.modal__input_type_name');
+let descriptionInput = document.querySelector('.modal__input_type_description');
 
 function openModal() {
     modal.classList.add('modal_is-open');
@@ -16,15 +16,15 @@ function openModal() {
     descriptionInput.value = profileDescription.textContent;
 }
 
+function closeModal() {
+    modal.classList.remove('modal_is-open');
+}
+
 function formSubmitHandler (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = descriptionInput.value;
     closeModal();
-}
-
-function closeModal() {
-    modal.classList.remove('modal_is-open');
 }
 
 openModalButton.addEventListener('click', openModal);

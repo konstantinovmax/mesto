@@ -19,52 +19,52 @@
                 <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Фотография Жака-Ива Кусто">
                 <div class="profile__info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button"></button>
+                    <button type="button" class="profile__edit-button"></button>
                     <p class="profile__description">Исследователь океана</p>
                 </div>           
-                <button class="profile__add-button"></button>
+                <button type="button" class="profile__add-button"></button>
             </section>
             <section class="elements">
                 <figure class="element">
                     <img class="element__image" src="./images/elements-yakutia.jfif" alt="Ленские столбы">
                     <div class="element__caption-container">
-                        <figcaption class="element__caption">Якутия</figcaption>
+                        <h2 class="element__caption">Якутия</h2>
                         <div class="element__like"></div>
                     </div>
                 </figure>
                 <figure class="element">
                     <img class="element__image" src="./images/elements-kamchatka.jfif" alt="Камчатка">
                     <div class="element__caption-container">
-                        <figcaption class="element__caption">Камчатка</figcaption>
-                        <div class="element__like" src="./images/element-like.svg"></div>
+                        <h2 class="element__caption">Камчатка</h2>
+                        <div class="element__like"></div>
                     </div>
                 </figure>
                 <figure class="element">
                     <img class="element__image" src="./images/elements-altai.jfif" alt="Алтайские горы">
                     <div class="element__caption-container">
-                        <figcaption class="element__caption">Алтай</figcaption>
-                        <div class="element__like" src="./images/element-like.svg"></div>
+                        <h2 class="element__caption">Алтай</h2>
+                        <div class="element__like"></div>
                     </div>
                 </figure>
                 <figure class="element">
                     <img class="element__image" src="./images/elments-dagestan.jfif" alt="Дагестан">
                     <div class="element__caption-container">
-                        <figcaption class="element__caption">Дагестан</figcaption>
-                        <div class="element__like" src="./images/element-like.svg"></div>
+                        <h2 class="element__caption">Дагестан</h2>
+                        <div class="element__like"></div>
                     </div>
                 </figure>
                 <figure class="element">
                     <img class="element__image" src="./images/elements-sakhalin.jfif" alt="Маяк Анива">
                     <div class="element__caption-container">
-                        <figcaption class="element__caption">Сахалин</figcaption>
-                        <div class="element__like" src="./images/element-like.svg"></div>
+                        <h2 class="element__caption">Сахалин</h2>
+                        <div class="element__like"></div>
                     </div>
                 </figure>
                 <figure class="element">
                     <img class="element__image" src="./images/elements-kaliningrad.jfif" alt="Куршская коса">
                     <div class="element__caption-container">
-                        <figcaption class="element__caption">Калининград</figcaption>
-                        <div class="element__like" src="./images/element-like.svg"></div>
+                        <h2 class="element__caption">Калининград</h2>
+                        <div class="element__like"></div>
                     </div>
                 </figure>
             </section>
@@ -74,12 +74,12 @@
         </footer>
     </div>
     <div class="modal">
-        <form action="#" class="modal__container">
+        <form name="form1" action="#" class="modal__container">
             <h2 class="modal__title">Редактировать профиль</h2>
-            <input name="name" type="text" class="modal__input modal__input_type-name" value="Жак-Ив Кусто">
-            <input name="description" type="text" class="modal__input modal__input_type-description" value="Исследователь океана">
+            <input name="name" type="text" class="modal__input modal__input_type_name" value="" required="required" placeholder="Введите имя">
+            <input name="description" type="text" class="modal__input modal__input_type_description" value="" required="required" placeholder="Введите описание">
             <button type="submit" class="modal__save-button">Сохранить</button>
-            <button class="modal__close-button"></button>
+            <button type="reset" class="modal__close-button"></button>
         </form>
     </div>
     <script src="./scripts/script.js"></script>

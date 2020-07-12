@@ -3,8 +3,11 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
-    max-width: 318px;
     margin-top: 6px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 318px;
 }
 
 @media screen and (max-width: 700px) {

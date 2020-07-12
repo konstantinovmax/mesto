@@ -5,5 +5,10 @@
     background-image: url(../../../images/element-like.svg);
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.element__like:hover {
+    opacity: 0.7;
     cursor: pointer;
+    transition: opacity ease .4s;
 }
