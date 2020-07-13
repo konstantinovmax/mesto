@@ -2,9 +2,11 @@
     min-width: 20.76px;
     min-height: 18.13px;
     margin-left: 15px;
+    background: inherit;
     background-image: url(../../../images/element-like.svg);
     background-repeat: no-repeat;
     background-position: center;
+    border: 0;
 }
 
 .element__like:hover {
