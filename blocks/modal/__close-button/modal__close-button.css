@@ -9,6 +9,7 @@
     background-image: url(../../../images/modal-close-button.svg);
     background-repeat: no-repeat;
     background-position: center;
+    outline: none;
 }
 
 .modal__close-button:hover {
