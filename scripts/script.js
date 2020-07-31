@@ -4,7 +4,6 @@ const pictureModal = document.querySelector('.modal_type_picture');
 
 const editFormElement = editElementModal.querySelector('.modal__container');
 const addFormElement = addElementModal.querySelector('.modal__container');
-const pictureForm = pictureModal.querySelector('.modal__container');
 
 const openModalEditButton = document.querySelector('.profile__edit-button');
 const openModalAddButton = document.querySelector('.profile__add-button');
@@ -25,28 +24,28 @@ const urlInput = addFormElement.querySelector('.modal__input_type_url');
 const pictureModalCaption = pictureModal.querySelector('.modal__caption');
 const pictureModalImage = pictureModal.querySelector('.modal__image');
 
-function openModal(modal) {
-    modal.classList.add('modal_is-open');
-    nameInput.value = profileName.textContent;
-    descriptionInput.value = profileDescription.textContent;
+function toggleModal(modal) {
+    modal.classList.toggle('modal_is-open');
 }
 
-function closeModal(modal) {
-    modal.classList.remove('modal_is-open');
+function editElementModalToggle() {
+    nameInput.value = profileName.textContent;
+    descriptionInput.value = profileDescription.textContent;
+    toggleModal(editElementModal);
 }
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = descriptionInput.value;
-    closeModal(editElementModal);
+    editElementModalToggle();
 }
 
 function addElementSubmitHandler(evt) {
     evt.preventDefault();
     console.log(placeInput.value, urlInput.value);
     renderElement({name: placeInput.value, link: urlInput.value});
-    closeModal(addElementModal);
+    toggleModal(addElementModal);
 }
 
 editFormElement.addEventListener('submit', formSubmitHandler);
@@ -54,23 +53,23 @@ addFormElement.addEventListener('submit', addElementSubmitHandler);
 
 
 openModalEditButton.addEventListener('click', () => {
-    openModal(editElementModal);
+    editElementModalToggle(editElementModal);
 });
 
 editElementCloseModalButton.addEventListener('click', () => {
-    closeModal(editElementModal);
+    editElementModalToggle(editElementModal);
 });
 
 openModalAddButton.addEventListener('click', () => {
-    openModal(addElementModal);
+    toggleModal(addElementModal);
 });
 
 addElementCloseModalButton.addEventListener('click', () => {
-    closeModal(addElementModal);
+    toggleModal(addElementModal);
 });
 
 pictureCloseModal.addEventListener('click', () => {
-    closeModal(pictureModal);
+    toggleModal(pictureModal);
 })
 
 const initialCards = [
@@ -110,13 +109,15 @@ function createElement(data) {
     const elementLike = elementItem.querySelector('.element__like');
     const elementDelete = elementItem.querySelector('.element__delete');
 
-    elementLike.addEventListener('click', () => {
-        handleLikeClick();
+    elementLike.addEventListener('click', function (e) {
+        const likeActive = e.target;
+        likeActive.classList.toggle('element__like_active'); 
     });
 
-    elementDelete.addEventListener('click', () => {
-        handleDeleteClick();
-    });
+    elementDelete.addEventListener('click', function (e) {
+        const deleteElement = e.target;
+        deleteElement.closest('.element').remove();
+    })
 
     elementImage.addEventListener('click', () => {
         handleImageClick(data.name, data.link);
@@ -124,30 +125,21 @@ function createElement(data) {
 
     elementCaption.textContent = data.name;
     elementImage.src = data.link;
+    elementImage.alt = data.name;
 
     return elementItem;
-};
-
-function handleLikeClick() {
-    const likeActive = event.target;
-    likeActive.classList.toggle('element__like_active');
-};
-
-function handleDeleteClick() {
-    const deleteElement = event.target;
-    deleteElement.closest('.element').remove();
-};
+}
 
 function handleImageClick(name, link) {
     pictureModalImage.src = link; 
     pictureModalCaption.textContent = name;
-    openModal(pictureModal);
-};
+    toggleModal(pictureModal);
+}
 
 function renderElement(data) {
     elements.prepend(createElement(data));
-};
+}
 
 initialCards.forEach((data) => {
     renderElement(data);
-});
+})
