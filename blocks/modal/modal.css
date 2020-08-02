@@ -5,7 +5,7 @@
 @import url(./__close-button/modal__close-button.css);
 @import url(./__image/modal__image.css);
 @import url(./__caption/modal__caption.css);
-@import url(./_type/modal_type-picture.css);
+@import url(./_type/modal_type_picture.css);
 @import url(./_type/modal_type_add-element.css);
 @import url(./_type/modal_type_edit-element.css);
 @import url(./__container/_type/modal__container_type-picture.css);
