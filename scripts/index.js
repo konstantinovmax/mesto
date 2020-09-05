@@ -82,7 +82,7 @@ function closeOverlayClick(evt) {
 }
 
 function editElementModalToggle() {
-    resetModal(modal);
+    resetModal();
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
     openModal(editElementModal);
@@ -97,7 +97,7 @@ function formSubmitHandler (evt) {
 
 function addElementSubmitHandler(evt) {
     evt.preventDefault();
-    resetModal(modal);
+    resetModal();
     console.log(placeInput.value, urlInput.value);
     renderElement({name: placeInput.value, link: urlInput.value});
     closeModal(addElementModal);
