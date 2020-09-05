@@ -34,19 +34,23 @@
         </footer>
     </div>
     <div class="modal modal_type_edit-profile">
-        <form name="form1" action="#" class="modal__container">
+        <form name="form1" action="#" class="modal__container" novalidate>
             <h2 class="modal__title">Редактировать профиль</h2>
-            <input name="name" type="text" class="modal__input modal__input_type_name" value="" required="required" placeholder="Введите имя">
-            <input name="description" type="text" class="modal__input modal__input_type_description" value="" required="required" placeholder="Введите описание">
+            <input id="name-input" name="name" type="text" class="modal__input modal__input_type_name" required="required" placeholder="Введите имя" minlength="2" maxlength="40">
+            <span id="name-input-error" class="modal__input-error"></span>
+            <input id="description-input" name="description" type="text" class="modal__input modal__input_type_description" required="required" placeholder="Введите описание" minlength="2" maxlength="200">
+            <span id="description-input-error" class="modal__input-error"></span>
             <button type="submit" class="modal__save-button">Сохранить</button>
             <button type="reset" class="modal__close-button"></button>
         </form>
     </div>
     <div class="modal modal_type_add-element">
-        <form name="form1" action="#" class="modal__container">
+        <form name="form1" action="#" class="modal__container" novalidate>
             <h2 class="modal__title">Новое место</h2>
-            <input name="name" type="text" class="modal__input modal__input_type_place" value="" required="required" placeholder="Название">
-            <input name="description" type="text" class="modal__input modal__input_type_url" value="" required="required" placeholder="Ссылка на картинку">
+            <input id="name-input" name="name" type="text" class="modal__input modal__input_type_place" required="required" placeholder="Название" minlength="1" maxlength="30">
+            <span id="name-input-error" class="modal__input-error"></span>
+            <input id="description-input" name="description" type="url" class="modal__input modal__input_type_url" required="required" placeholder="Ссылка на картинку">
+            <span id="description-input-error" class="modal__input-error"></span>
             <button type="submit" class="modal__save-button">Сохранить</button>
             <button type="reset" class="modal__close-button"></button>
         </form>
@@ -71,6 +75,7 @@
         </figure>
     </template>
 
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>

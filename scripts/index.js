@@ -1,3 +1,4 @@
+const modal = document.querySelector('.modal');
 const editElementModal = document.querySelector('.modal_type_edit-profile');
 const addElementModal = document.querySelector('.modal_type_add-element');
 const pictureModal = document.querySelector('.modal_type_picture');
@@ -24,53 +25,8 @@ const urlInput = addFormElement.querySelector('.modal__input_type_url');
 const pictureModalCaption = pictureModal.querySelector('.modal__caption');
 const pictureModalImage = pictureModal.querySelector('.modal__image');
 
-function toggleModal(modal) {
-    modal.classList.toggle('modal_is-open');
-}
-
-function editElementModalToggle() {
-    nameInput.value = profileName.textContent;
-    descriptionInput.value = profileDescription.textContent;
-    toggleModal(editElementModal);
-}
-
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileDescription.textContent = descriptionInput.value;
-    editElementModalToggle();
-}
-
-function addElementSubmitHandler(evt) {
-    evt.preventDefault();
-    console.log(placeInput.value, urlInput.value);
-    renderElement({name: placeInput.value, link: urlInput.value});
-    toggleModal(addElementModal);
-}
-
-editFormElement.addEventListener('submit', formSubmitHandler);
-addFormElement.addEventListener('submit', addElementSubmitHandler);
-
-
-openModalEditButton.addEventListener('click', () => {
-    editElementModalToggle(editElementModal);
-});
-
-editElementCloseModalButton.addEventListener('click', () => {
-    editElementModalToggle(editElementModal);
-});
-
-openModalAddButton.addEventListener('click', () => {
-    toggleModal(addElementModal);
-});
-
-addElementCloseModalButton.addEventListener('click', () => {
-    toggleModal(addElementModal);
-});
-
-pictureCloseModal.addEventListener('click', () => {
-    toggleModal(pictureModal);
-})
+const elementTemplate = document.querySelector('.template-element').content.querySelector('.element');
+const elements = document.querySelector('.elements');
 
 const initialCards = [
     {
@@ -99,8 +55,53 @@ const initialCards = [
     }
 ];
 
-const elementTemplate = document.querySelector('.template-element').content.querySelector('.element');
-const elements = document.querySelector('.elements');
+function openModal(modal) {
+    modal.classList.add('modal_is-open');
+    document.addEventListener('keydown', closeEscapeButton);
+    document.addEventListener('mousedown', closeOverlayClick);
+}
+
+function closeModal(modal) {
+    modal.classList.remove('modal_is-open');
+    document.removeEventListener('keydown', closeEscapeButton);
+    document.removeEventListener('mousedown', closeOverlayClick);
+}
+
+function closeEscapeButton(evt) {
+    const modal = document.querySelector('.modal_is-open');
+    if (evt.key === 'Escape') {
+        closeModal(modal);
+    }
+}
+
+function closeOverlayClick(evt) {
+    const modal = document.querySelector('.modal_is-open');
+    if (evt.target.classList.contains('modal')) {
+        closeModal(modal);
+    }
+}
+
+function editElementModalToggle() {
+    resetModal(modal);
+    nameInput.value = profileName.textContent;
+    descriptionInput.value = profileDescription.textContent;
+    openModal(editElementModal);
+}
+
+function formSubmitHandler (evt) {
+    evt.preventDefault();
+    profileName.textContent = nameInput.value;
+    profileDescription.textContent = descriptionInput.value;
+    closeModal(event.target.closest('.modal'));
+}
+
+function addElementSubmitHandler(evt) {
+    evt.preventDefault();
+    resetModal(modal);
+    console.log(placeInput.value, urlInput.value);
+    renderElement({name: placeInput.value, link: urlInput.value});
+    closeModal(addElementModal);
+}
 
 function createElement(data) {
     const elementItem = elementTemplate.cloneNode(true);
@@ -133,12 +134,35 @@ function createElement(data) {
 function handleImageClick(name, link) {
     pictureModalImage.src = link; 
     pictureModalCaption.textContent = name;
-    toggleModal(pictureModal);
+    openModal(pictureModal);
 }
 
 function renderElement(data) {
     elements.prepend(createElement(data));
 }
+
+editFormElement.addEventListener('submit', formSubmitHandler);
+addFormElement.addEventListener('submit', addElementSubmitHandler);
+
+openModalEditButton.addEventListener('click', () => {
+    editElementModalToggle(editElementModal);
+});
+
+editElementCloseModalButton.addEventListener('click', () => {
+    closeModal(editElementModal);
+});
+
+openModalAddButton.addEventListener('click', () => {
+    openModal(addElementModal);
+});
+
+addElementCloseModalButton.addEventListener('click', () => {
+    closeModal(addElementModal);
+});
+
+pictureCloseModal.addEventListener('click', () => {
+    closeModal(pictureModal);
+})
 
 initialCards.forEach((data) => {
     renderElement(data);

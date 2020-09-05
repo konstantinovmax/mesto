@@ -10,6 +10,10 @@
 @import url(./_type/modal_type_edit-element.css);
 @import url(./__container/_type/modal__container_type-picture.css);
 @import url(./__close-button/_type/modal__close-button_type-picture.css);
+@import url(./__save-button/_disabled/modal__save-button_disabled.css);
+@import url(./__input/_type/modal__input_type_error.css);
+@import url(./__input-error/modal__input-error.css);
+@import url(./__input-error/_active/modal__input-error_active.css);
 
 .modal {
     position: fixed;
