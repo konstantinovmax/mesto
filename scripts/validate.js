@@ -7,17 +7,17 @@ const formValidation = {
   errorClass: 'modal__input-error_active'
 }
 
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, {inputErrorClass, errorClass}) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add(formValidation.inputErrorClass);
+  inputElement.classList.add(inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(formValidation.errorClass);
+  errorElement.classList.add(errorClass);
 }
 
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, {inputErrorClass, errorClass}) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove(formValidation.inputErrorClass);
-  errorElement.classList.remove(formValidation.errorClass);
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.classList.remove(errorClass);
   errorElement.textContent = '';
 }
 
@@ -69,7 +69,23 @@ function enableValidation(formValidation) {
 
 enableValidation(formValidation);
 
-function resetModal() {
+function resetModal(modal) {
+  const formElement = modal.querySelector(formValidation.formSelector);
+  const inputList = Array.from(formElement.querySelectorAll(formValidation.inputSelector));
+  const buttonElement = formElement.querySelector(formValidation.submitButtonSelector);  
+  const rest = {
+    'inputErrorClass' : formValidation.inputErrorClass, 
+    'errorClass' : formValidation.errorClass
+  }
+  inputList.forEach(inputElement => {
+    inputElement.value = '';
+    hideInputError(formElement, inputElement, rest);
+  });
+  buttonElement.classList.add(formValidation.inactiveButtonClass);
+  buttonElement.setAttribute('disabled', '');
+}
+
+function resetModal(modal) {
   const formElement = modal.querySelector(formValidation.formSelector);
   if (formElement !== null) {
     formElement.reset();
@@ -80,12 +96,12 @@ function resetModal() {
       const errorElement = document.querySelector(`#${inputElement.id}-error`);
       errorElement.classList.remove(formValidation.errorClass);
     });
-    if (!buttonElement.classList.contains('')) {
+    if (!buttonElement.classList.contains('modal__save-button-add')) {
       buttonElement.classList.remove(formValidation.inactiveButtonClass);
-      buttonElement.removeAttribute('disabled', '');
+      buttonElement.disabled = false;
     } else {
       buttonElement.classList.add(formValidation.inactiveButtonClass);
-      buttonElement.setAttribute('disabled', '');
+      buttonElement.disabled = true;
     }
   }
 }

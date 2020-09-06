@@ -26,7 +26,7 @@ const pictureModalCaption = pictureModal.querySelector('.modal__caption');
 const pictureModalImage = pictureModal.querySelector('.modal__image');
 
 const elementTemplate = document.querySelector('.template-element').content.querySelector('.element');
-const elements = document.querySelector('.elements');
+const sectionElements = document.querySelector('.elements');
 
 const initialCards = [
     {
@@ -82,7 +82,7 @@ function closeOverlayClick(evt) {
 }
 
 function editElementModalToggle() {
-    resetModal();
+    resetModal(modal);
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
     openModal(editElementModal);
@@ -92,14 +92,14 @@ function formSubmitHandler (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = descriptionInput.value;
-    closeModal(event.target.closest('.modal'));
+    closeModal(event.target.closest('.modal_type_edit-profile'));
 }
 
 function addElementSubmitHandler (evt) {
     evt.preventDefault();
-    console.log(placeInput.value, urlInput.value);
     renderElement({name: placeInput.value, link: urlInput.value});
     closeModal(addElementModal);
+    resetModal(addElementModal);
 }
 
 function createElement(data) {
@@ -133,11 +133,12 @@ function createElement(data) {
 function handleImageClick(name, link) {
     pictureModalImage.src = link; 
     pictureModalCaption.textContent = name;
+    pictureModalImage.alt = name;
     openModal(pictureModal);
 }
 
 function renderElement(data) {
-    elements.prepend(createElement(data));
+    sectionElements.prepend(createElement(data));
 }
 
 editFormElement.addEventListener('submit', formSubmitHandler);
