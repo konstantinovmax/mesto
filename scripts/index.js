@@ -82,7 +82,7 @@ function closeOverlayClick(evt) {
 }
 
 function editElementModalToggle() {
-    resetModal(modal);
+    resetModal(modal, formValidation);
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
     openModal(editElementModal);
@@ -99,7 +99,7 @@ function addElementSubmitHandler (evt) {
     evt.preventDefault();
     renderElement({name: placeInput.value, link: urlInput.value});
     closeModal(addElementModal);
-    resetModal(addElementModal);
+    resetModal(addElementModal, formValidation);
 }
 
 function createElement(data) {

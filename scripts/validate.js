@@ -69,23 +69,7 @@ function enableValidation(formValidation) {
 
 enableValidation(formValidation);
 
-function resetModal(modal) {
-  const formElement = modal.querySelector(formValidation.formSelector);
-  const inputList = Array.from(formElement.querySelectorAll(formValidation.inputSelector));
-  const buttonElement = formElement.querySelector(formValidation.submitButtonSelector);  
-  const rest = {
-    'inputErrorClass' : formValidation.inputErrorClass, 
-    'errorClass' : formValidation.errorClass
-  }
-  inputList.forEach(inputElement => {
-    inputElement.value = '';
-    hideInputError(formElement, inputElement, rest);
-  });
-  buttonElement.classList.add(formValidation.inactiveButtonClass);
-  buttonElement.setAttribute('disabled', '');
-}
-
-function resetModal(modal) {
+function resetModal(modal, formValidation) {
   const formElement = modal.querySelector(formValidation.formSelector);
   if (formElement !== null) {
     formElement.reset();
@@ -98,10 +82,10 @@ function resetModal(modal) {
     });
     if (!buttonElement.classList.contains('modal__save-button-add')) {
       buttonElement.classList.remove(formValidation.inactiveButtonClass);
-      buttonElement.disabled = false;
+      buttonElement.removeAttribute('disabled', '');
     } else {
       buttonElement.classList.add(formValidation.inactiveButtonClass);
-      buttonElement.disabled = true;
+      buttonElement.setAttribute('disabled', '');
     }
   }
 }
