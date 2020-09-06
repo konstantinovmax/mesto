@@ -95,9 +95,8 @@ function formSubmitHandler (evt) {
     closeModal(event.target.closest('.modal'));
 }
 
-function addElementSubmitHandler(evt) {
+function addElementSubmitHandler (evt) {
     evt.preventDefault();
-    resetModal();
     console.log(placeInput.value, urlInput.value);
     renderElement({name: placeInput.value, link: urlInput.value});
     closeModal(addElementModal);
