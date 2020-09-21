@@ -1,3 +1,6 @@
+import { Card } from './Card.js';
+import { formValidation, FormValidator, resetModal } from './FormValidator.js';
+
 const modal = document.querySelector('.modal');
 const editElementModal = document.querySelector('.modal_type_edit-profile');
 const addElementModal = document.querySelector('.modal_type_add-element');
@@ -25,7 +28,7 @@ const urlInput = addFormElement.querySelector('.modal__input_type_url');
 const pictureModalCaption = pictureModal.querySelector('.modal__caption');
 const pictureModalImage = pictureModal.querySelector('.modal__image');
 
-const elementTemplate = document.querySelector('.template-element').content.querySelector('.element');
+const cardSelector = '.template-element';
 const sectionElements = document.querySelector('.elements');
 
 const initialCards = [
@@ -54,6 +57,12 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+const formList = Array.from(document.querySelectorAll(formValidation.formSelector));
+    formList.forEach((formElement) => {
+    const formValidator = new FormValidator(formValidation, formElement);
+    formValidator.enableValidation();
+});
 
 function openModal(modal) {
     modal.classList.add('modal_is-open');
@@ -97,48 +106,19 @@ function formSubmitHandler (evt) {
 
 function addElementSubmitHandler (evt) {
     evt.preventDefault();
-    renderElement({name: placeInput.value, link: urlInput.value});
+    const cards = {
+        name: placeInput.value,
+        link: urlInput.value
+    }
+    renderElement(cards, cardSelector);
     closeModal(addElementModal);
     resetModal(addElementModal, formValidation);
 }
 
-function createElement(data) {
-    const elementItem = elementTemplate.cloneNode(true);
-    const elementImage = elementItem.querySelector('.element__image');
-    const elementCaption = elementItem.querySelector('.element__caption');
-    const elementLike = elementItem.querySelector('.element__like');
-    const elementDelete = elementItem.querySelector('.element__delete');
-
-    elementLike.addEventListener('click', function (e) {
-        const likeActive = e.target;
-        likeActive.classList.toggle('element__like_active'); 
-    });
-
-    elementDelete.addEventListener('click', function (e) {
-        const deleteElement = e.target;
-        deleteElement.closest('.element').remove();
-    })
-
-    elementImage.addEventListener('click', () => {
-        handleImageClick(data.name, data.link);
-    });
-
-    elementCaption.textContent = data.name;
-    elementImage.src = data.link;
-    elementImage.alt = data.name;
-
-    return elementItem;
-}
-
-function handleImageClick(name, link) {
-    pictureModalImage.src = link; 
-    pictureModalCaption.textContent = name;
-    pictureModalImage.alt = name;
-    openModal(pictureModal);
-}
-
-function renderElement(data) {
-    sectionElements.prepend(createElement(data));
+function renderElement(item, cardSelector) {
+    const card = new Card(item, cardSelector, openModal, pictureModal, pictureModalImage, pictureModalCaption);
+    const cardElement = card.generateCard();
+    sectionElements.prepend(cardElement);
 }
 
 editFormElement.addEventListener('submit', formSubmitHandler);
@@ -162,8 +142,8 @@ addElementCloseModalButton.addEventListener('click', () => {
 
 pictureCloseModal.addEventListener('click', () => {
     closeModal(pictureModal);
-})
+});
 
-initialCards.forEach((data) => {
-    renderElement(data);
-})
+initialCards.forEach((item) => {
+    renderElement(item, cardSelector);
+});
