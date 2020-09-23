@@ -1,5 +1,5 @@
-import { Card } from './Card.js';
-import { formValidation, FormValidator, resetModal } from './FormValidator.js';
+import Card from './Card.js';
+import { formValidation, FormValidator } from './FormValidator.js';
 
 const modal = document.querySelector('.modal');
 const editElementModal = document.querySelector('.modal_type_edit-profile');
@@ -58,11 +58,8 @@ const initialCards = [
     }
 ];
 
-const formList = Array.from(document.querySelectorAll(formValidation.formSelector));
-    formList.forEach((formElement) => {
-    const formValidator = new FormValidator(formValidation, formElement);
-    formValidator.enableValidation();
-});
+const formValidatorEditElement = new FormValidator(formValidation, editFormElement);
+const formValidatorAddElement = new FormValidator(formValidation, addFormElement);
 
 function openModal(modal) {
     modal.classList.add('modal_is-open');
@@ -74,6 +71,7 @@ function closeModal(modal) {
     modal.classList.remove('modal_is-open');
     document.removeEventListener('keydown', closeEscapeButton);
     document.removeEventListener('mousedown', closeOverlayClick);
+    formValidatorEditElement.resetModal(modal, formValidation);
 }
 
 function closeEscapeButton(evt) {
@@ -91,7 +89,7 @@ function closeOverlayClick(evt) {
 }
 
 function editElementModalToggle() {
-    resetModal(modal, formValidation);
+    formValidatorEditElement.resetModal(modal, formValidation);
     nameInput.value = profileName.textContent;
     descriptionInput.value = profileDescription.textContent;
     openModal(editElementModal);
@@ -101,7 +99,7 @@ function formSubmitHandler (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = descriptionInput.value;
-    closeModal(event.target.closest('.modal_type_edit-profile'));
+    closeModal(evt.target.closest('.modal_type_edit-profile'));
 }
 
 function addElementSubmitHandler (evt) {
@@ -112,7 +110,6 @@ function addElementSubmitHandler (evt) {
     }
     renderElement(cards, cardSelector);
     closeModal(addElementModal);
-    resetModal(addElementModal, formValidation);
 }
 
 function renderElement(item, cardSelector) {
@@ -147,3 +144,6 @@ pictureCloseModal.addEventListener('click', () => {
 initialCards.forEach((item) => {
     renderElement(item, cardSelector);
 });
+
+formValidatorEditElement.enableValidation();
+formValidatorAddElement.enableValidation();
