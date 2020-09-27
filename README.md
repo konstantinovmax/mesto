@@ -11,4 +11,5 @@
 1. Доструктурировать код по методологии ООП
 2. Собрать проект при помощи Webpack
 
-### https://konstantinovmax.github.io/mesto/index.html
+### Ссылка на проект:
+#### https://konstantinovmax.github.io/mesto/index.html
