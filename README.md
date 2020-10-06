@@ -12,4 +12,4 @@
 2. Собрать проект при помощи Webpack
 
 ### Ссылка на проект:
-#### https://konstantinovmax.github.io/mesto/index.html
+#### https://konstantinovmax.github.io/mesto/src/index.html
