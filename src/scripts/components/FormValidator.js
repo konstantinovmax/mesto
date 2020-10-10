@@ -67,24 +67,12 @@ export default class FormValidator {
     this._setEventListeners();
   }
 
-  resetModal = (modal, formValidation) => {
-    const formElement = modal.querySelector(formValidation.formSelector);
-    if (formElement !== null) {
-      formElement.reset();
-      const buttonElement = formElement.querySelector(formValidation.submitButtonSelector);
-      const inputList = Array.from(document.querySelectorAll(formValidation.inputSelector));
-      inputList.forEach(function(inputElement) {
-        inputElement.classList.remove(formValidation.inputErrorClass);
-        const errorElement = document.querySelector(`#${inputElement.id}-error`);
-        errorElement.classList.remove(formValidation.errorClass);
-      });
-      if (!buttonElement.classList.contains('modal__save-button-add')) {
-        buttonElement.classList.remove(formValidation.inactiveButtonClass);
-        buttonElement.removeAttribute('disabled', '');
-      } else {
-        buttonElement.classList.add(formValidation.inactiveButtonClass);
-        buttonElement.setAttribute('disabled', '');
-      }
-    }
+  resetModal() {
+    this._inputList.forEach(inputElement => {
+      this._formElement.reset();
+      this._hideInputError(inputElement);
+    });
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.setAttribute('disabled', '');  
   }
 }

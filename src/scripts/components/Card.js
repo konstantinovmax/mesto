@@ -1,12 +1,9 @@
 export default class Card {
-    constructor(data, cardSelector, openModal, pictureModal, pictureModalImage, pictureModalCaption) {
+    constructor(data, cardSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
-        this._openModal = openModal;
-        this._pictureModal = pictureModal;
-        this._pictureModalImage = pictureModalImage;
-        this._pictureModalCaption = pictureModalCaption;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -26,7 +23,7 @@ export default class Card {
             this._elementDelete(e);
         });
         this._cardImage.addEventListener('click', () => {
-            this._handleImageClick();
+            this._handleCardClick();
         });
     }
 
@@ -38,13 +35,6 @@ export default class Card {
     _elementLike(e) {
         const likeActive = e.target;
         likeActive.classList.toggle('element__like_active');
-    }
-
-    _handleImageClick() {
-        this._pictureModalImage.src = this._link;
-        this._pictureModalCaption.textContent = this._name;
-        this._pictureModalImage.alt = this._name;
-        this._openModal(this._pictureModal);
     }
 
     generateCard() {

@@ -34,7 +34,7 @@
         </footer>
     </div>
     <div class="modal modal_type_edit-profile">
-        <form name="form1" action="#" class="modal__container" novalidate>
+        <form name="form1" action="#" class="modal__container modal__container_type_edit-profile" novalidate>
             <h2 class="modal__title">Редактировать профиль</h2>
             <input id="name-input" name="name" type="text" class="modal__input modal__input_type_name" required="required" placeholder="Введите имя" minlength="2" maxlength="40">
             <span id="name-input-error" class="modal__input-error"></span>
@@ -45,13 +45,13 @@
         </form>
     </div>
     <div class="modal modal_type_add-element">
-        <form name="form1" action="#" class="modal__container" novalidate>
+        <form name="form1" action="#" class="modal__container modal__container_type_add-element" novalidate>
             <h2 class="modal__title">Новое место</h2>
             <input id="name-input" name="name" type="text" class="modal__input modal__input_type_place" required="required" placeholder="Название" minlength="1" maxlength="30">
             <span id="name-input-error" class="modal__input-error"></span>
             <input id="description-input" name="description" type="url" class="modal__input modal__input_type_url" required="required" placeholder="Ссылка на картинку">
             <span id="description-input-error" class="modal__input-error"></span>
-            <button type="submit" class="modal__save-button modal__save-button-add">Сохранить</button>
+            <button type="submit" class="modal__save-button">Сохранить</button>
             <button type="reset" class="modal__close-button"></button>
         </form>
     </div>
