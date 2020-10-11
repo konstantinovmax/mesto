@@ -1,9 +1,10 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
-    constructor(modalSelector, handleFormSubmit) {
+    constructor(modalSelector, handleFormSubmit, resetModal) {
         super(modalSelector);
         this._handleFormSubmit = handleFormSubmit;
+        this._resetModal = resetModal;
     }
 
     _getInputValues() {
@@ -24,6 +25,6 @@ export default class PopupWithForm extends Popup {
 
     close() {
         super.close();
-        super.reset();
+        this._resetModal();
     }
 }

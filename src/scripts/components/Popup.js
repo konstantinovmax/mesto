@@ -3,31 +3,29 @@ export default class Popup {
         this._modalSelector = modalSelector;
         this._modal = document.querySelector(this._modalSelector);
         this._closeButton = this._modal.querySelector('.modal__close-button');
+        this._handleEscClose = this._handleEscClose.bind(this);
+        this._closeOverlay = this._closeOverlay.bind(this);
     }
 
     open() {
         this._modal.classList.add('modal_is-open');
-        document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
-        this._modal.addEventListener('mousedown', (evt) => this._closeOverlay(evt));
+        document.addEventListener('keydown', this._handleEscClose);
+        this._modal.addEventListener('mousedown', this._closeOverlay);
     }
 
     close() {
-        this._modal.classList.remove('modal_is-open');
-        document.removeEventListener('keydown', (evt) => this._handleEscClose(evt));
-        this._modal.removeEventListener('mousedown', (evt) => this._closeOverlay(evt));
+        this._modal.classList.remove('modal_is-open');  
     }
 
     _handleEscClose(evt) {
-        const modal = document.querySelector('.modal_is-open');
         if (evt.key === 'Escape') {
-            this.close(modal);
+            this.close();
         }
     }
 
     _closeOverlay(evt) {
-        const modal = document.querySelector('.modal_is-open');
         if (evt.target.classList.contains('modal')) {
-            this.close(modal);
+            this.close();
         }
     }
 
