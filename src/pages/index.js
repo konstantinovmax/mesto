@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import FormValidator from '../scripts/components/FormValidator.js';
 import Section from '../scripts/components/Section.js';
 import ModalWithImage from '../scripts/components/ModalWithImage.js';
