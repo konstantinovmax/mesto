@@ -1,13 +1,13 @@
 import '../pages/index.css';
 import FormValidator from '../scripts/components/FormValidator.js';
 import Section from '../scripts/components/Section.js';
-import ModalWithImage from '../scripts/components/ModalWithImage.js';
-import ModalWithForm from '../scripts/components/ModalWithForm.js';
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import Card from '../scripts/components/Card.js';
 import { openModalEditButton, openModalAddButton, editFormElement,
     addFormElement, nameInput, descriptionInput,
-    pictureModalImage, pictureModalCaption, sectionElements,
+    pictureModalImage, pictureModalCaption, elementsSection,
     cardSelector, profileName, profileDescription,
     editElementModal, addElementModal, pictureModal,
     formValidation, initialCards
@@ -27,17 +27,17 @@ const cardsList = new Section({
         cardsList.addItem(cardElement);
         },
     },
-    sectionElements
+    elementsSection
 );
 
 cardsList.renderItems();
 
 
-const modalOpenImage = new ModalWithImage(pictureModal, pictureModalImage, pictureModalCaption);
+const modalOpenImage = new PopupWithImage(pictureModal, pictureModalImage, pictureModalCaption);
 modalOpenImage.setEventListeners();
 
 
-const modalEditProfile = new ModalWithForm(
+const modalEditProfile = new PopupWithForm(
     editElementModal,
     function handleFormSubmit(newUserInfo) {
         userInfo.setUserInfo(newUserInfo);
@@ -55,7 +55,7 @@ openModalEditButton.addEventListener('click', () => {
 });
 
 
-const modalAddPlace = new ModalWithForm(
+const modalAddPlace = new PopupWithForm(
     addElementModal,
     function handleFormSubmit(cardInfo) {
         const formElement = createCard(cardInfo);

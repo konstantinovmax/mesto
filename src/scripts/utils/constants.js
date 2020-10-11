@@ -7,7 +7,7 @@ const descriptionInput = document.querySelector('.modal__input_type_description'
 const pictureModalImage = document.querySelector('.modal__image');
 const pictureModalCaption = document.querySelector('.modal__caption');
 
-const sectionElements = '.elements';
+const elementsSection = '.elements';
 const cardSelector = '.template-element';
 const profileName = '.profile__name';
 const profileDescription = '.profile__description';
@@ -53,7 +53,7 @@ const initialCards = [
 
 export { openModalEditButton, openModalAddButton, editFormElement,
     addFormElement, nameInput, descriptionInput,
-    pictureModalImage, pictureModalCaption, sectionElements,
+    pictureModalImage, pictureModalCaption, elementsSection,
     cardSelector, profileName, profileDescription,
     editElementModal, addElementModal, pictureModal,
     formValidation, initialCards

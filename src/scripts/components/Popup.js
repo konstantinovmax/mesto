@@ -1,20 +1,20 @@
-export default class Modal {
+export default class Popup {
     constructor(modalSelector) {
         this._modalSelector = modalSelector;
-        this._formElement = document.querySelector(this._modalSelector);
-        this._closeButton = this._formElement.querySelector('.modal__close-button');
+        this._modal = document.querySelector(this._modalSelector);
+        this._closeButton = this._modal.querySelector('.modal__close-button');
     }
 
     open() {
-        this._formElement.classList.add('modal_is-open');
+        this._modal.classList.add('modal_is-open');
         document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
-        this._formElement.addEventListener('mousedown', (evt) => this._closeOverlay(evt));
+        this._modal.addEventListener('mousedown', (evt) => this._closeOverlay(evt));
     }
 
     close() {
-        this._formElement.classList.remove('modal_is-open');
-        document.removeEventListener('keydown', () => this._handleEscClose());
-        this._formElement.removeEventListener('mousedown', () => this._closeOverlay());
+        this._modal.classList.remove('modal_is-open');
+        document.removeEventListener('keydown', (evt) => this._handleEscClose(evt));
+        this._modal.removeEventListener('mousedown', (evt) => this._closeOverlay(evt));
     }
 
     _handleEscClose(evt) {
