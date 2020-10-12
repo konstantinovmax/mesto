@@ -43,11 +43,11 @@ const modalEditProfile = new PopupWithForm(
         userInfo.setUserInfo(newUserInfo);
         modalEditProfile.close();
     },
+    () => formValidatorEditElement.resetModal()
 );
 
 modalEditProfile.setEventListeners();
 openModalEditButton.addEventListener('click', () => {
-    formValidatorEditElement.resetModal();
     const userData = userInfo.getUserInfo();
     nameInput.value = userData.profileName;
     descriptionInput.value = userData.profileDescription;
@@ -62,11 +62,11 @@ const modalAddPlace = new PopupWithForm(
         cardsList.addItem(formElement);
         modalAddPlace.close();
     },
+    () => formValidatorAddElement.resetModal()
 );
 
 modalAddPlace.setEventListeners();
 openModalAddButton.addEventListener('click', () => {
-    formValidatorAddElement.resetModal();
     modalAddPlace.open();
 });
 
