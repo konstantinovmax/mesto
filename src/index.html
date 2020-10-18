@@ -15,7 +15,9 @@
         </header>
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Фотография Жака-Ива Кусто">
+                <div class="profile__avatar-container">
+                    <img class="profile__avatar" src="./images/profile-avatar.png" alt="Фотография Жака-Ива Кусто">
+                </div>
                 <div class="profile__info">
                     <div class="profile__name-edit">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -31,6 +33,15 @@
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
+    </div>
+    <div class="modal modal_type_edit-avatar">
+        <form name="form1" action="#" class="modal__container modal__container_type_edit-avatar" novalidate>
+            <h2 class="modal__title">Обновить аватар</h2>
+            <input id="avatar-input" name="avatarName" type="url" class="modal__input modal__input_type_url" required="required" placeholder="Ссылка на картинку">
+            <span id="avatar-input-error" class="modal__input-error"></span>
+            <button type="submit" class="modal__save-button">Сохранить</button>
+            <button type="reset" class="modal__close-button"></button>
+        </form>
     </div>
     <div class="modal modal_type_edit-profile">
         <form name="form1" action="#" class="modal__container modal__container_type_edit-profile" novalidate>
@@ -63,13 +74,24 @@
             </figure>
         </div>
     </div>
+    <div class="modal modal_type_delete-element">
+        <form name="form1" action="#" class="modal__container modal__container_type_delete-element" novalidate>
+            <h2 class="modal__title">Вы уверены?</h2>
+            <button type="submit" class="modal__save-button">Да</button>
+            <button type="reset" class="modal__close-button"></button>
+        </form>
+    </div>
     <template class="template-element">
         <figure class="element">
             <button type="button" class="element__delete"></button>
             <img class="element__image" src="#" alt="">
             <div class="element__caption-container">
                 <h2 class="element__caption"></h2>
-                <button type="button" class="element__like"></button>
+                <div class="element__like-area">
+                    <button type="button" class="element__like-button"></button>
+                    <output class="element__like-numbers">0</output>
+                </div>
+                
             </div>
         </figure>
     </template>

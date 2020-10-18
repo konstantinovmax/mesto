@@ -7,10 +7,10 @@ export default class PopupWithImage extends Popup {
         this._pictureModalCaption = pictureModalCaption;
     }
 
-    open(data) {
-        this._pictureModalImage.src = data._link;
-        this._pictureModalCaption.textContent = data._name;
-        this._pictureModalImage.alt = data._name;
+    open(card) {
+        this._pictureModalImage.src = card._link;
+        this._pictureModalCaption.textContent = card._name;
+        this._pictureModalImage.alt = card._name;
         super.open();
     }
 }
