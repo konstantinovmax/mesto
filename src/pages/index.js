@@ -35,36 +35,27 @@ formValidatorEditElement.enableValidation();
 formValidatorAddElement.enableValidation();
 
 
-function infoAboutUser() {
-    api
-        .getUserInfo()
-        .then((res) => {
-            userInfo.setUserInfo(res);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-}
-
-
-function renderCards() {
-    api
-        .getAllCards()
-        .then((res) => {
-            cardsList.renderItems(res);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-}
-
-
-Promise.all([infoAboutUser()])
-    .then((res) => {
-        renderCards(res);
+Promise.all([api.getUserInfo(), api.getAllCards()])
+    .then(() => {
+        api
+            .getUserInfo()
+            .then((res) => {
+                userInfo.setUserInfo(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        api
+            .getAllCards()
+            .then((res) => {
+                cardsList.renderItems(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     })
     .catch((err) => {
-        alert('Ошибка', err);
+        console.log(err);
     });
 
 
