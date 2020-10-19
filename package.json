@@ -4,7 +4,7 @@
   "description": "1. Организация HTML-кода и файлового хранилища по методологии БЭМ\r 2. Адаптивная, отзывчивая вёрстка с применением Grid Layout, Media Queries, Desktop First, Pixel Perfect\r 3. JavaScript (ES6), ООП, JS-модули",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && webpack",
+    "build": "rimraf dist && webpack",
     "dev": "webpack-dev-server --open --watch"
   },
   "repository": {

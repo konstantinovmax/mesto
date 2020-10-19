@@ -1,11 +1,11 @@
-import '../pages/index.css';
-import FormValidator from '../scripts/components/FormValidator.js';
-import Section from '../scripts/components/Section.js';
-import PopupWithImage from '../scripts/components/PopupWithImage.js';
-import PopupWithForm from '../scripts/components/PopupWithForm.js';
-import PopupWithButton from '../scripts/components/PopupWithButton.js';
-import UserInfo from '../scripts/components/UserInfo.js';
-import Card from '../scripts/components/Card.js';
+import './index.css';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithButton from '../components/PopupWithButton.js';
+import UserInfo from '../components/UserInfo.js';
+import Card from '../components/Card.js';
 import { openModalEditAvatarButton, openModalEditButton, openModalAddButton,
         editAvatarElement, editFormElement, addFormElement,
         nameInput, descriptionInput, pictureModalImage,
@@ -13,8 +13,8 @@ import { openModalEditAvatarButton, openModalEditButton, openModalAddButton,
         profileName, profileDescription, editAvatarSelector,
         editAvatarElementModal, editElementModal, addElementModal,
         deleteElementModal, pictureModal, formValidation
-} from '../scripts/utils/constants.js';
-import Api from '../scripts/components/Api';
+} from '../utils/constants.js';
+import Api from '../components/Api';
 
 
 const api = new Api({
@@ -46,8 +46,6 @@ function infoAboutUser() {
         });
 }
 
-infoAboutUser();
-
 
 function renderCards() {
     api
@@ -60,7 +58,14 @@ function renderCards() {
         });
 }
 
-renderCards();
+
+Promise.all([infoAboutUser()])
+    .then((res) => {
+        renderCards(res);
+    })
+    .catch((err) => {
+        alert('Ошибка', err);
+    });
 
 
 const cardsList = new Section({
