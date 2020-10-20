@@ -36,23 +36,9 @@ formValidatorAddElement.enableValidation();
 
 
 Promise.all([api.getUserInfo(), api.getAllCards()])
-    .then(() => {
-        api
-            .getUserInfo()
-            .then((res) => {
-                userInfo.setUserInfo(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        api
-            .getAllCards()
-            .then((res) => {
-                cardsList.renderItems(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+    .then(([user, cards]) => {
+        userInfo.setUserInfo(user);
+        cardsList.renderItems(cards);
     })
     .catch((err) => {
         console.log(err);
