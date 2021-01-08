@@ -10,7 +10,7 @@ export default class UserInfo {
             profileName: this._profileName.textContent,
             profileDescription: this._profileDescription.textContent,
             profileAvatar: this._profileAvatar.src
-        }
+        };
     }
 
     setUserInfo(userData) {

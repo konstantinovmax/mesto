@@ -16,7 +16,7 @@ export default class Card {
         const cardElement = document
         .querySelector(this._cardSelector)
         .content
-        .cloneNode(true)
+        .cloneNode(true);
 
         return cardElement;
     }
@@ -38,7 +38,7 @@ export default class Card {
 
     myLikes(data) {
         return data.likes.some(item => {
-          return item._id === this._myId
+          return item._id === this._myId;
         });
     }
 
